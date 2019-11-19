@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1062215045449",
+    "firebase_url": "https://lojaflutter-5398b.firebaseio.com",
+    "project_id": "lojaflutter-5398b",
+    "storage_bucket": "lojaflutter-5398b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062215045449:android:f3217a14622be8480f8a98",
+        "android_client_info": {
+          "package_name": "com.tavares.daniel.loja_virtual"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1062215045449-fqnm42e9rtla5q1glbpoj1sa2ud32m5n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDXbz5Alw4Ha3-TAVS-xQNXkFE3uhFHmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1062215045449-fqnm42e9rtla5q1glbpoj1sa2ud32m5n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
