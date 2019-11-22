@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/BotaoDrawer/BotaoDrawer.dart';
+import 'package:loja_virtual/screens/LoginScreen.dart';
 
 class CustomDrawer extends StatelessWidget {
+
+  final PageController pageController;
+
+  CustomDrawer(this.pageController);
 
   Widget _buildDrawerBack() => Container(
     decoration: BoxDecoration(
@@ -33,13 +39,49 @@ class CustomDrawer extends StatelessWidget {
                       Positioned(
                         top: 8.0,
                         left: 0.0,
-                        child: Text("Flutter's\nClothing",
+                        child: Text("Água\n& Gás",
                         style: TextStyle(fontSize: 34.0, fontWeight: FontWeight.bold),
                         ),
                       ),
+                      Positioned(
+                        bottom: 0.0,
+                        left: 0.0,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text("Olá,", style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.0,
+                            ),
+                            ),
+                            GestureDetector(
+                              child: Text(
+                                "Entre ou cadastre-se >",
+                                style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => LoginScreen()
+                                    )
+                                  );
+                              },
+                            )
+                          ],
+                        ),
+                      )
                     ],
                 ),
               ),
+              Divider(),
+              BotaoDrawer(Icons.home, "Início", pageController, 0),
+              BotaoDrawer(Icons.list, "Produtos", pageController, 1),
+              BotaoDrawer(Icons.add_location, "Encontre uma loja", pageController, 2),
+              BotaoDrawer(Icons.playlist_add_check, "Meus Pedidos", pageController, 3),
             ],
           )
         ],
