@@ -18,5 +18,11 @@ class DadosProduto {
     price = snapshot.data["price"];
     images = snapshot.data["images"];
   }
-
+  Map<String, dynamic> toResumeMap(){
+    return {
+      "title": title,
+      "description": description,
+      "price": price,
+    };
+  }
 }

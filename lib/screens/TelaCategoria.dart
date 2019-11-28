@@ -29,7 +29,9 @@ class TelaCategoria extends StatelessWidget {
                 itemCount: snapshot.data.documents.length,
                 padding: EdgeInsets.all(4.0),
                 itemBuilder: (context, index){
-                    return Produtos(DadosProduto.fromDocument(snapshot.data.documents[index]));
+                    DadosProduto data = DadosProduto.fromDocument(snapshot.data.documents[index]);
+                    data.category = this.snapshot.documentID;
+                    return Produtos(data);
                 },
               );
             }

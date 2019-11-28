@@ -22,7 +22,6 @@ class BotaoCategoria extends StatelessWidget {
           )
       ),
     );
-
     return ListTile(
           leading: CircleAvatar(
             radius: 25.0,

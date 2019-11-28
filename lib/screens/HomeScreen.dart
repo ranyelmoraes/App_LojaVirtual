@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/CustomDrawer/CustomDrawer.dart';
+import 'package:loja_virtual/tabs/BotaoCarrinho.dart';
 import 'package:loja_virtual/tabs/HomeTab.dart';
 import 'package:loja_virtual/tabs/ProductsList.dart';
 
@@ -16,6 +17,7 @@ class HomeScreen extends StatelessWidget {
        Scaffold(
          body: HomeTab(),
          drawer: CustomDrawer(_pageController),
+         floatingActionButton: BotaoCarrinho(),
        ),
         Scaffold(
           appBar: AppBar(
@@ -31,6 +33,7 @@ class HomeScreen extends StatelessWidget {
           ),
           drawer: CustomDrawer(_pageController),
           body: ProductsList(),
+          floatingActionButton: BotaoCarrinho(),
         ),
         Container(color: Colors.red),
         Container(color: Colors.green),

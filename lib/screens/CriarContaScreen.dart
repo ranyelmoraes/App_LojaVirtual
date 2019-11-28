@@ -14,6 +14,7 @@ class _CriarContaScreenState extends State<CriarContaScreen> {
   final TextEditingController _addressController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   Widget _buildBodyBack() => Container(
     decoration: BoxDecoration(
@@ -31,15 +32,16 @@ class _CriarContaScreenState extends State<CriarContaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
         appBar: AppBar(
           centerTitle: true,
           title: Text("CRIAR CONTA"),
         ),
         body: ScopedModelDescendant<UserModel>(
           builder: (context, child, model){
-            if(model.isLoading){
+            if(model.isLoading)
               return Center(child: CircularProgressIndicator());
-            }
+
             return Stack(
               children: <Widget>[
                 _buildBodyBack(),
@@ -53,8 +55,12 @@ class _CriarContaScreenState extends State<CriarContaScreen> {
                             icon: Icon(Icons.person, color: Colors.white),
                             labelText: "Nome Completo: ",
                             labelStyle: TextStyle(
-                              color: Colors.white,
-                            )),
+                              color: Colors.grey,
+                            )
+                        ),
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                         keyboardType: TextInputType.text,
                         controller: _nameController,
                         validator: (text){
@@ -69,8 +75,12 @@ class _CriarContaScreenState extends State<CriarContaScreen> {
                             icon: Icon(Icons.email, color: Colors.white),
                             labelText: "E-mail: ",
                             labelStyle: TextStyle(
-                              color: Colors.white,
-                            )),
+                              color: Colors.grey,
+                            )
+                        ),
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                         keyboardType: TextInputType.emailAddress,
                         controller: _emailController,
                         validator: (text){
@@ -85,8 +95,12 @@ class _CriarContaScreenState extends State<CriarContaScreen> {
                             icon: Icon(Icons.lock, color: Colors.white),
                             labelText: "Senha: ",
                             labelStyle: TextStyle(
-                              color: Colors.white,
-                            )),
+                              color: Colors.grey,
+                            )
+                        ),
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                         obscureText: true,
                         controller: _passController,
                         validator: (text){
@@ -98,11 +112,15 @@ class _CriarContaScreenState extends State<CriarContaScreen> {
                       Divider(),
                       TextFormField(
                         decoration: InputDecoration(
-                            icon: Icon(Icons.lock, color: Colors.white),
+                            icon: Icon(Icons.add_location , color: Colors.white),
                             labelText: "Endereço: ",
                             labelStyle: TextStyle(
-                              color: Colors.white,
-                            )),
+                              color: Colors.grey,
+                            )
+                        ),
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                         controller: _addressController,
                         validator: (text){
                           if(text.isEmpty){
@@ -133,7 +151,7 @@ class _CriarContaScreenState extends State<CriarContaScreen> {
                               model.SignUp(
                                 userData: userData,
                                 senha: _passController.text,
-                                onSucess: _onSuccess,
+                                onSuccess: _onSuccess,
                                 onFail: _onFail,
                               );
                             }
@@ -150,11 +168,24 @@ class _CriarContaScreenState extends State<CriarContaScreen> {
     );
   }
   void _onSuccess(){
-
+      _scaffoldKey.currentState.showSnackBar(
+          SnackBar(content: Text("Usuário criado com sucesso!"),
+            backgroundColor: Theme.of(context).primaryColor,
+            duration: Duration(seconds: 2),
+          )
+      );
+      Future.delayed(Duration(seconds: 2)).then((_){
+          Navigator.of(context).pop();
+      });
   }
 
   void _onFail(){
-
+    _scaffoldKey.currentState.showSnackBar(
+        SnackBar(content: Text("Falha ao criar usuário!"),
+          backgroundColor: Colors.redAccent,
+          duration: Duration(seconds: 2),
+        )
+    );
   }
 }
 
