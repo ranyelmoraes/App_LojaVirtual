@@ -1,6 +1,6 @@
 # loja_virtual
 
-A new Flutter application.
+Aplicativo Mobile em Flutter de um MarketPlace
 
 ## Getting Started
 
